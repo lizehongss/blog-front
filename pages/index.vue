@@ -1,7 +1,7 @@
 <template>
   <section class="container">
     <div>
-      <logo />
+      <!-- <logo /> -->
       <h1 class="title">
         blog-front
       </h1>
@@ -9,28 +9,26 @@
         My stupendous Nuxt.js project
       </h2>
       <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >Documentation</a>
+        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
+          Documentation
+        </a>
         <a
           href="https://github.com/nuxt/nuxt.js"
           target="_blank"
-          class="button--grey"
-        >GitHub</a>
+          class="button--grey iconfont icon-github"
+        >GitHub
+        </a>
       </div>
     </div>
   </section>
 </template>
-
 <script>
-import Logo from '~/components/Logo.vue'
+// import Logo from '~/components/Logo.vue'
 
 export default {
-  components: {
-    Logo
-  }
+  // components: {
+  //   Logo
+  // }
 }
 </script>
 
