@@ -1,34 +1,18 @@
 <template>
   <section class="container">
     <div>
-      <!-- <logo /> -->
-      <h1 class="title">
-        blog-front
-      </h1>
-      <h2 class="subtitle">
-        My stupendous Nuxt.js project
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey iconfont icon-github"
-        >GitHub
-        </a>
-      </div>
+      <MyButton />
     </div>
   </section>
 </template>
 <script>
 // import Logo from '~/components/Logo.vue'
+import MyButton from '~/components/MyButton.vue'
 
 export default {
-  // components: {
-  //   Logo
-  // }
+  components: {
+    MyButton
+  }
 }
 </script>
 
