@@ -26,7 +26,8 @@ module.exports = {
   ** Global CSS
   */
   css: [
-    './assets/font/iconfont.css'
+    './assets/font/iconfont.css',
+    './assets/common.css'
   ],
 
   /*
