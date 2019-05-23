@@ -12,8 +12,8 @@
         </nuxt-link>
       </li>
       <li>
-        <nuxt-link class="to_router" to="/">
-          首页
+        <nuxt-link class="to_router" to="/demo">
+          作品
         </nuxt-link>
       </li>
       <li>
