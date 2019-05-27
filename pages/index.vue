@@ -8,11 +8,20 @@
 <script>
 // import Logo from '~/components/Logo.vue'
 import MyButton from '~/components/MyButton.vue'
+import api from '~/api/index.js'
 
 export default {
   components: {
     MyButton
-  }
+  },
+  async mounted () {
+    let data = {
+      current_page: 7
+    }
+    const res = await api.getArts({ ...data, page_size: data.page_size ||6})
+    console.log(res)
+
+  },
 }
 </script>
 
