@@ -1,11 +1,11 @@
 <template>
   <div class="demo-show">
-    <div class="demo"></div>
+    <!-- <div class="demo"></div> -->
   </div>
 </template>
 <script>
 export default {
-  name: 'demo',
+  name: 'Demo',
   data () {
     return {
       demoList:[{

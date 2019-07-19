@@ -1,26 +1,45 @@
 <template>
   <section class="container">
-    <div>
-      <MyButton />
+    <div v-for="year in yearList" :key="year.year">
+      {{ year.year }}
+
+      <div v-for="month in year.monthList" :key="month">
+         {{ month }}
+      </div>
     </div>
   </section>
 </template>
 <script>
 // import Logo from '~/components/Logo.vue'
-import MyButton from '~/components/MyButton.vue'
-import api from '~/api/index.js'
+// import MyButton from '~/components/MyButton.vue'
 
 export default {
-  components: {
-    MyButton
+  // components: {
+  //   MyButton
+  // },
+  name: 'SiteMap',
+  scrollToTop: true,
+  transition: 'fade',
+  head: {
+    title: 'sitemap'
   },
-  async mounted () {
-    let data = {
-      current_page: 7
-    }
-    const res = await api.getArts({ ...data, page_size: data.page_size ||6})
-    console.log(res)
 
+  data () {
+    return {
+      articleList: []
+    }
+  },
+  computed: {
+    yearList () {
+      return this.$store.state.sitemap.art
+    }
+  },
+  fetch ({ store }) {
+    return store.dispatch('sitemap/getSitemap', {page_size: 1000})
+  },
+
+  mounted () {
+    console.log(this.$store.state.sitemap.art)
   },
 }
 </script>
@@ -33,6 +52,7 @@ export default {
   justify-content: center;
   align-items: center;
   text-align: center;
+  color: #fff;
 }
 
 .title {
