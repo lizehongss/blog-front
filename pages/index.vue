@@ -4,7 +4,10 @@
       {{ year.year }}
 
       <div v-for="month in year.monthList" :key="month">
-         {{ month }}
+         {{ month.month }}
+         <div v-for="articleList in month.articleList" :key="articleList">
+           {{ articleList.title }}
+         </div>
       </div>
     </div>
   </section>
