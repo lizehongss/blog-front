@@ -1,13 +1,14 @@
 <template>
   <section class="container">
-    <div v-for="year in yearList" :key="year.year">
-      {{ year.year }}
-
-      <div v-for="month in year.monthList" :key="month">
-         {{ month.month }}
-         <div v-for="articleList in month.articleList" :key="articleList">
-           {{ articleList.title }}
-         </div>
+    <div v-for="year in yearList" :key="year.year" class="art_years">
+      <span class="art_year">{{ year.year }}</span>
+      <div v-for="month in year.monthList" :key="month.month" class="art_months">
+        <span class="art_month">{{ month.month }}</span>
+        <div class="art_items">
+          <div v-for="artList in month.articleList" :key="artList.title" ref="art_item" class="art_item">
+            <span>{{ artList.title }}</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -43,7 +44,21 @@ export default {
 
   mounted () {
     console.log(this.$store.state.sitemap.art)
+    this.init3D()
   },
+  methods: {
+    init3D () {
+      let artArry = this.$refs.art_item
+      console.log(artArry)
+      let artArryLength = artArry.length
+      let unitDeg = 360/artArryLength
+      Array.prototype.forEach.call(artArry, (it,i) => {
+        it.style.transform = `rotateY(${i*unitDeg}deg) translateZ(280px)`
+      })
+
+      console.log(artArry)
+      }
+  }
 }
 </script>
 
@@ -78,5 +93,42 @@ export default {
 
 .links {
   padding-top: 15px;
+}
+.art_years {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.art_months {
+  perspective: 5000px;
+}
+.art_items {
+  width: 200px;
+  height: 100px;
+  /* border: 1px solid #ddd; */
+  margin: 200px auto;
+  transform-style: preserve-3d;
+  animation: autoMove 12s infinite linear;
+}
+
+@keyframes autoMove {
+  from { }
+  to {
+    transform: rotateY(-360deg);
+  }
+}
+.art_items:hover {
+  animation-play-state: paused;
+}
+.art_item {
+  width: 200px;
+  height: 100px;
+  background-color:#fff;
+  color: #000;
+  opacity: .6s;
+  font-size: 20px;
+  line-height: 100px;
+  text-align: center;
+  position: absolute;
 }
 </style>
