@@ -1,12 +1,12 @@
 <template>
   <section class="container">
     <div v-for="year in yearList" :key="year.year" class="art_years">
-      <span class="art_year">{{ year.year }}</span>
+      <!-- <span class="art_year">{{ year.year }}</span> -->
       <div v-for="month in year.monthList" :key="month.month" class="art_months">
-        <span class="art_month">{{ month.month }}</span>
+        <span class="art_month">{{ month.month | monthFilter }}</span>
         <div class="art_items">
           <div v-for="artList in month.articleList" :key="artList.title" ref="art_item" class="art_item">
-            <span>{{ artList.title }}</span>
+            <span>{{ artList.title }} | {{ artList.create_at | dateFormat('MM.dd') }}</span>
           </div>
         </div>
       </div>
@@ -27,7 +27,24 @@ export default {
   head: {
     title: 'sitemap'
   },
-
+  filters: {
+    monthFilter (val) {
+      switch (val) {
+        case 1: return 'January'
+        case 2: return 'February'
+        case 3: return 'March'
+        case 4: return 'April'
+        case 5: return 'May'
+        case 6: return 'June'
+        case 7: return 'July'
+        case 8: return 'August'
+        case 9: return 'September'
+        case 10: return 'October'
+        case 11: return 'November'
+        case 12: return 'December'
+      }
+    }
+  },
   data () {
     return {
       articleList: []
@@ -55,14 +72,12 @@ export default {
       Array.prototype.forEach.call(artArry, (it,i) => {
         it.style.transform = `rotateY(${i*unitDeg}deg) translateZ(280px)`
       })
-
-      console.log(artArry)
       }
   }
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 .container {
   margin: 0 auto;
   /* min-height: 100vh; */
@@ -106,7 +121,7 @@ export default {
   width: 200px;
   height: 100px;
   /* border: 1px solid #ddd; */
-  margin: 200px auto;
+  margin: 30px auto;
   transform-style: preserve-3d;
   animation: autoMove 12s infinite linear;
 }
@@ -121,9 +136,12 @@ export default {
   animation-play-state: paused;
 }
 .art_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 100px;
-  background-color:#fff;
+  background: linear-gradient(to left,rgba(255,0,0,0), rgba(255,255,255,1));
   color: #000;
   opacity: .6s;
   font-size: 20px;

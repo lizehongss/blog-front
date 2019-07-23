@@ -1,7 +1,7 @@
 {
   "name": "blog-front",
   "version": "1.0.0",
-  "description": "My stupendous Nuxt.js project",
+  "description": "blog-front",
   "author": "lizehong",
   "private": true,
   "scripts": {
@@ -16,6 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cross-env": "^5.2.0",
+    "highlight": "^0.2.4",
     "koa": "^2.6.2",
     "nuxt": "^2.4.0"
   },

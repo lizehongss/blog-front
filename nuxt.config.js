@@ -26,14 +26,21 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    {
+      src: './assets/index.scss',
+      lang: 'sass'
+    },
     './assets/font/iconfont.css',
-    './assets/common.css'
+    // 'highlight.js/style/github.css'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    {
+      src: '~/plugins/filter.js'
+    }
   ],
 
   /*
