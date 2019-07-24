@@ -4,3 +4,24 @@
 .page-enter, .page-leave-active {
   opacity: 0;
 }
+#canvas{
+  background: #000;
+        position: absolute;
+        top: 0;
+        z-index: -9999;
+        left: 0;
+        right: 0;
+        bottom: 0;
+}
+html,
+body {
+  margin: 0;
+  letter-spacing: 0.5px;
+  // font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+  font-family: -apple-system,BlinkMacSystemFont,Helvetica Neue,PingFang SC,Microsoft YaHei,Source Han Sans SC,Noto Sans CJK SC,WenQuanYi Micro Hei,sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  height: 99%;
+}

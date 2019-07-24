@@ -1,12 +1,14 @@
 <template>
   <section class="container">
     <div v-for="year in yearList" :key="year.year" class="art_years">
-      <!-- <span class="art_year">{{ year.year }}</span> -->
+      <span class="art_year">{{ year.year }}</span>
       <div v-for="month in year.monthList" :key="month.month" class="art_months">
         <span class="art_month">{{ month.month | monthFilter }}</span>
         <div class="art_items">
           <div v-for="artList in month.articleList" :key="artList.title" ref="art_item" class="art_item">
-            <span>{{ artList.title }} | {{ artList.create_at | dateFormat('MM.dd') }}</span>
+            <nuxt-link :to="`/article/$(artList._id)`" class="art_item_link">
+              {{ artList.title }} | {{ artList.create_at | dateFormat('MM.dd') }}
+            </nuxt-link>
           </div>
         </div>
       </div>
@@ -61,92 +63,102 @@ export default {
 
   mounted () {
     console.log(this.$store.state.sitemap.art)
-    this.init3D()
+    // this.init3D()
   },
   methods: {
-    init3D () {
-      let artArry = this.$refs.art_item
-      console.log(artArry)
-      let artArryLength = artArry.length
-      let unitDeg = 360/artArryLength
-      Array.prototype.forEach.call(artArry, (it,i) => {
-        it.style.transform = `rotateY(${i*unitDeg}deg) translateZ(280px)`
-      })
-      }
+    // init3D () {
+    //   let artArry = this.$refs.art_item
+    //   console.log(artArry)
+    //   let artArryLength = artArry.length
+    //   let unitDeg = 360/artArryLength
+    //   Array.prototype.forEach.call(artArry, (it,i) => {
+    //     it.style.transform = `rotateY(${i*unitDeg}deg) translateZ(280px)`
+    //   })
+    //   }
   }
 }
 </script>
 
 <style scoped lang="scss">
 .container {
-  margin: 0 auto;
-  /* min-height: 100vh; */
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
   text-align: center;
-  color: #fff;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
+  background-color: #fff;
+  opacity: 0.9;
+  width: 50%;
+  left: 25%;
+  bottom: 10%;
+  right: 0;
+  position: absolute;
+  border-radius: 5%;
 }
 .art_years {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.art_months {
-  perspective: 5000px;
-}
-.art_items {
-  width: 200px;
-  height: 100px;
-  /* border: 1px solid #ddd; */
-  margin: 30px auto;
-  transform-style: preserve-3d;
-  animation: autoMove 12s infinite linear;
-}
-
-@keyframes autoMove {
-  from { }
-  to {
-    transform: rotateY(-360deg);
+  width: 100%;
+  margin-top: 1em;
+  > span {
+    display: block;
+    background: linear-gradient(to bottom right,rgba(150, 143, 143, 0),rgb(190, 189, 188));
+    border-bottom: 1px solid #ddd;
+    font-size: 1em;
+  }
+  .art_months {
+    margin-top: 1em;
+    .art_month {
+      margin-top: 1em;
+    } 
+    .art_items {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      .art_item {
+        border-bottom: none;
+        padding: 2em;
+        &:hover {
+          border-bottom: 1px solid #ddd;
+        }
+      }
+    }
   }
 }
-.art_items:hover {
-  animation-play-state: paused;
-}
-.art_item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 200px;
-  height: 100px;
-  background: linear-gradient(to left,rgba(255,0,0,0), rgba(255,255,255,1));
+// .art_items {
+// perspective: 5000px;
+//   width: 200px;
+//   height: 100px;
+//   /* border: 1px solid #ddd; */
+//   margin: 30px auto;
+//   transform-style: preserve-3d;
+//   animation: autoMove 12s infinite linear;
+// }
+
+// @keyframes autoMove {
+//   from { }
+//   to {
+//     transform: rotateY(-360deg);
+//   }
+// }
+// .art_items:hover {
+//   animation-play-state: paused;
+// }
+// .art_item {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 200px;
+//   height: 100px;
+//   background: linear-gradient(to left,rgba(255,0,0,0), rgba(255,255,255,1));
+//   opacity: .6s;
+//   font-size: 20px;
+//   line-height: 100px;
+//   text-align: center;
+//   position: absolute;
+// }
+.art_item_link {
+  text-decoration: none;
+  font-size: 10px;
   color: #000;
-  opacity: .6s;
-  font-size: 20px;
-  line-height: 100px;
-  text-align: center;
-  position: absolute;
 }
 </style>

@@ -40,6 +40,9 @@ module.exports = {
   plugins: [
     {
       src: '~/plugins/filter.js'
+    },
+    {
+      src: '~/plugins/highlight.js'
     }
   ],
 

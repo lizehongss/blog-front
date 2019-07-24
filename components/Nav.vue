@@ -40,7 +40,7 @@ export default {
 <style lang="scss" scoped>
 .nav {
   position: relative;
-  margin: 20px 0;
+  // padding: 20px 0;
   li {
     display: inline-block;
     position: relative;
