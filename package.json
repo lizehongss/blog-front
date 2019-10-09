@@ -16,7 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "cross-env": "^5.2.0",
-    "highlight.js": "^9.15.8",
+    "highlight.js": "^9.15.10",
     "koa": "^2.6.2",
     "nuxt": "^2.4.0"
   },

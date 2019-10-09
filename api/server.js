@@ -11,7 +11,7 @@ export function getallArts () {
            .then(res => res.data)
 }
 // 获取单个文章
-export function geArt (data) {
+export function getArt (data) {
   return ax.get(`/article_detail/${data.id}`)
             .then(res => res.data)
 }

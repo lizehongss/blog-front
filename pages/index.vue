@@ -1,30 +1,30 @@
 <template>
   <section class="container">
-    <div v-for="year in yearList" :key="year.year" class="art_years">
+    <div v-for="(year,index) in yearList" v-show="yearIndex === index" :key="year.year" class="art_years">
       <span class="art_year">{{ year.year }}</span>
       <div v-for="month in year.monthList" :key="month.month" class="art_months">
         <span class="art_month">{{ month.month | monthFilter }}</span>
         <div class="art_items">
           <div v-for="artList in month.articleList" :key="artList.title" ref="art_item" class="art_item">
-            <nuxt-link :to="`/article/$(artList._id)`" class="art_item_link">
+            <nuxt-link :to="{name: 'article-id', params:{id: artList._id}}" class="art_item_link">
               {{ artList.title }} | {{ artList.create_at | dateFormat('MM.dd') }}
             </nuxt-link>
           </div>
         </div>
       </div>
     </div>
+    <div v-show="yearIndex != 0" class="lastYear" @click="changeYearIndex('last')">
+      下一年
+    </div>
+    <div v-show="yearIndex != yearList.length-1" class="nextYear" @click="changeYearIndex('next')">
+      上一年
+    </div>
   </section>
 </template>
 <script>
-// import Logo from '~/components/Logo.vue'
-// import MyButton from '~/components/MyButton.vue'
-
 export default {
-  // components: {
-  //   MyButton
-  // },
   name: 'SiteMap',
-  scrollToTop: true,
+  scrollToTop: true,  
   transition: 'fade',
   head: {
     title: 'sitemap'
@@ -49,7 +49,8 @@ export default {
   },
   data () {
     return {
-      articleList: []
+      articleList: [],
+      yearIndex: 0  
     }
   },
   computed: {
@@ -63,18 +64,16 @@ export default {
 
   mounted () {
     console.log(this.$store.state.sitemap.art)
-    // this.init3D()
   },
   methods: {
-    // init3D () {
-    //   let artArry = this.$refs.art_item
-    //   console.log(artArry)
-    //   let artArryLength = artArry.length
-    //   let unitDeg = 360/artArryLength
-    //   Array.prototype.forEach.call(artArry, (it,i) => {
-    //     it.style.transform = `rotateY(${i*unitDeg}deg) translateZ(280px)`
-    //   })
-    //   }
+    changeYearIndex(sign) {
+      
+      if (sign === 'last') {
+        this.yearIndex -=1
+      } else {
+        this.yearIndex +=1
+      }
+    }
   }
 }
 </script>
@@ -93,7 +92,19 @@ export default {
   bottom: 10%;
   right: 0;
   position: absolute;
-  border-radius: 5%;
+  border-radius: 3%;
+  overflow: auto;
+  .lastYear, .nextYear{
+    position: absolute;
+    bottom: 1em;
+    cursor: pointer;
+  }
+  .lastYear{
+    left: 2em
+  }
+  .nextYear{
+    right: 2em;
+  }
 }
 .art_years {
   width: 100%;
@@ -115,8 +126,8 @@ export default {
       justify-content: flex-start;
       align-items: flex-start;
       .art_item {
-        border-bottom: none;
-        padding: 2em;
+        border-bottom: 1px solid #fff;
+        margin: 1em;
         &:hover {
           border-bottom: 1px solid #ddd;
         }
@@ -124,38 +135,6 @@ export default {
     }
   }
 }
-// .art_items {
-// perspective: 5000px;
-//   width: 200px;
-//   height: 100px;
-//   /* border: 1px solid #ddd; */
-//   margin: 30px auto;
-//   transform-style: preserve-3d;
-//   animation: autoMove 12s infinite linear;
-// }
-
-// @keyframes autoMove {
-//   from { }
-//   to {
-//     transform: rotateY(-360deg);
-//   }
-// }
-// .art_items:hover {
-//   animation-play-state: paused;
-// }
-// .art_item {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 200px;
-//   height: 100px;
-//   background: linear-gradient(to left,rgba(255,0,0,0), rgba(255,255,255,1));
-//   opacity: .6s;
-//   font-size: 20px;
-//   line-height: 100px;
-//   text-align: center;
-//   position: absolute;
-// }
 .art_item_link {
   text-decoration: none;
   font-size: 10px;
