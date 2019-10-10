@@ -6,14 +6,18 @@
     <style type="text/css">
 
     </style>
+    <link rel="stylesheet" href="/live2d/css/live2d.css" />
 </head>
 
 <body {{ BODY_ATTRS }}>
     {{ APP }}
     <canvas id="canvas"></canvas>
+    <!-- <canvas id="live2d" width="280" height="250" class="live2d"></canvas> -->
     <script>
+        var message_Path = '/live2d/'
+        var home_Path = 'http://127.0.0.1'  //此处修改为你的域名，必须带斜杠
+
         let canvas = document.getElementById('canvas')
-        console.log(canvas)
         let ctx = canvas.getContext('2d')
         const WIDTH = canvas.width = document.documentElement.clientWidth
         const HEIGHT = canvas.height = document.documentElement.clientHeight
@@ -63,6 +67,11 @@
             window.requestAnimationFrame(animate);
         }
         animate();
+    </script>
+    <script type="text/javascript" src="/live2d/js/live2d.js"></script>
+    <script type="text/javascript" src="/live2d/js/message.js"></script>
+    <script type="text/javascript">
+        loadlive2d("live2d", "/live2d/model/tia/model.json");
     </script>
 </body>
 
