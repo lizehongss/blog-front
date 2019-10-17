@@ -39,6 +39,9 @@ module.exports = {
   */
   plugins: [
     {
+      src: '~/plugins/marked.js'
+    },
+    {
       src: '~/plugins/filter.js'
     },
     {
@@ -50,8 +53,11 @@ module.exports = {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/style-resources' // 添加对应的模块
   ],
-
+  styleResources: {
+    scss: ['./assets/variable.scss']
+  },
   /*
   ** Build configuration
   */

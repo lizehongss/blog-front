@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="body">
     <Nav class="body_nav" />
     <nuxt class="body_container" />
   </div>
@@ -13,6 +13,9 @@ export default {
 }
 </script>
 <style>
+.body{
+  height: 100%;
+}
 .body_nav{
   height: 20%;
 }
