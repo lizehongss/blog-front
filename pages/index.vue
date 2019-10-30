@@ -14,10 +14,10 @@
       </div>
     </div>
     <div v-show="yearIndex != 0" class="lastYear" @click="changeYearIndex('last')">
-      下一年
+      下个精彩
     </div>
     <div v-show="yearIndex != yearList.length-1" class="nextYear" @click="changeYearIndex('next')">
-      上一年
+      上个回忆
     </div>
   </section>
 </template>
@@ -85,8 +85,6 @@ export default {
   justify-content: flex-start;
   align-items: center;
   text-align: center;
-  background-color: #fff;
-  opacity: 0.9;
   width: 50%;
   left: 25%;
   bottom: 10%;
@@ -94,16 +92,18 @@ export default {
   position: absolute;
   border-radius: 3%;
   overflow: auto;
+  color: #fff;
   .lastYear, .nextYear{
     position: absolute;
     bottom: 1em;
     cursor: pointer;
+    border-bottom: 1px solid #fff;
   }
   .lastYear{
-    left: 2em
+    left: 0em
   }
   .nextYear{
-    right: 2em;
+    right: 0em;
   }
 }
 .art_years {
@@ -111,14 +111,13 @@ export default {
   margin-top: 1em;
   > span {
     display: block;
-    background: linear-gradient(to bottom right,rgba(150, 143, 143, 0),rgb(190, 189, 188));
-    border-bottom: 1px solid #ddd;
-    font-size: 1em;
+    font-size: 2em;
   }
   .art_months {
     margin-top: 1em;
     .art_month {
       margin-top: 1em;
+      font-size: 1.5em;
     } 
     .art_items {
       display: flex;
@@ -128,16 +127,13 @@ export default {
       .art_item {
         border-bottom: 1px solid #fff;
         margin: 1em;
-        &:hover {
-          border-bottom: 1px solid #ddd;
-        }
       }
     }
   }
 }
 .art_item_link {
   text-decoration: none;
-  font-size: 10px;
-  color: #000;
+  font-size: 1em;
+  color: #fff;
 }
 </style>
