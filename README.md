@@ -18,5 +18,10 @@ $ npm start
 # generate static project
 $ npm run generate
 ```
+## pm2 启动
+```
+pm2 start npm --name "blog-front" -- run start  
+```
+
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
