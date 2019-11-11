@@ -3,7 +3,8 @@ import querystring from 'querystring'
 import axios from 'axios'
 
 const ax = axios.create({
-  baseURL: 'http://112.74.163.75:8000/api/'
+  // baseURL: 'http://112.74.163.75:8000/api/'
+  baseURL: 'http://127.0.0.1:8000/api/'
 })
 
 // 拦截器

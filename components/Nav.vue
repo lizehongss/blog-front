@@ -7,6 +7,11 @@
         </nuxt-link>
       </li>  
       <li>
+        <nuxt-link class="to_router" to="/tags">
+          标签
+        </nuxt-link>
+      </li>
+      <li>
         <nuxt-link class="to_router" to="/about">
           about
         </nuxt-link>
@@ -14,16 +19,6 @@
       <li>
         <nuxt-link class="to_router" to="/demo">
           作品
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link class="to_router" to="/">
-          首页
-        </nuxt-link>
-      </li>
-      <li>
-        <nuxt-link class="to_router" to="/">
-          首页
         </nuxt-link>
       </li>
     </ul>

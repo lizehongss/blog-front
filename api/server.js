@@ -15,3 +15,8 @@ export function getArt (data) {
   return ax.get(`/article_detail/${data.id}`)
             .then(res => res.data)
 }
+// 获取标签列表
+export function getTags (params) {
+  return ax.get('/tag', {params})
+            .then(res => res.data)
+}

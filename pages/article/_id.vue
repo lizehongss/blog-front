@@ -1,15 +1,16 @@
 <template>
   <div class="articleList">
     <div class="articleCont">
-      <h3 class="articleTitle">{{ article.title }}</h3>
+      <h3 class="articleTitle">
+        {{ article.title }}
+      </h3>
       <div class="meta">
         <span class="time">{{ article.create_at | dateFormat('yyyy.MM.dd hh:mm') }} | </span>
         <span class="num">字数 {{ article.content.length }} | </span>
         <span class="view">阅读 {{ article.meta.views }}</span>
       </div>
     </div>
-    <div class="articleContent" v-html="articleContent"> 
-    </div> 
+    <div class="articleContent" v-html="articleContent" /> 
   </div>
 </template>
 <script>
@@ -17,13 +18,6 @@ import markdown from '~/plugins/marked'
 export default {
     name: 'MArticle',
     transitions: 'fade',
-    head () {
-      return { title: `${this.$store.state.article.details.title}`}
-    },
-    fetch ({ store, params }) {
-      console.log(params)
-      return store.dispatch('article/getArt', params)
-    },
     computed: {
       article () {
         return this.$store.state.article.details
@@ -31,7 +25,15 @@ export default {
       articleContent () {
         return markdown(this.article.content, false, true).html
       }
-    }
+    },
+    head () {
+      return { title: `${this.$store.state.article.details.title}`}
+    },
+    fetch ({ store, params }) {
+      console.log(params)
+      return store.dispatch('article/getArt', params)
+    },
+
 }
 </script>
 <style lang="scss">
@@ -44,7 +46,7 @@ export default {
   flex-direction: column;
   .articleCont{
     .articleTitle{
-      font-size: $titleSize;
+      font-size: $font-size-title;
     }
     .meta{
       color: $descript;
