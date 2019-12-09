@@ -11,6 +11,12 @@
       </div>
     </div>
     <div class="articleContent" v-html="articleContent" /> 
+    <div class="articleToc">
+      <span class="articleTitle" v-if="articleToc.length">目录</span>
+      <a :href='item.anchor' v-for="item in articleToc" :key="item.anchor" class="articleTocItem" :style="tocItemStyle(item.level)">
+        {{ item.text }}
+      </a>
+    </div>
   </div>
 </template>
 <script>
@@ -24,6 +30,20 @@ export default {
       },
       articleContent () {
         return markdown(this.article.content, false, true).html
+      },
+      articleToc () {
+        return markdown(this.article.content, false, true).toc
+      }
+    },
+    methods: {
+      tocItemStyle(level) {
+        return level === 1 ? {
+          marginLeft: level*10 + 'px',
+          color:'#fff'
+        } : 
+        {
+          marginLeft: level*10 + 'px'
+        }
       }
     },
     head () {
@@ -91,6 +111,23 @@ export default {
         background-color: transparent;
         color: $text;
       }
+    }
+  }
+  .articleToc {
+    position: fixed;
+    right: 0;
+    top: 15em;
+    width: 20%;
+    .articleTitle {
+      display: inline-block;
+      margin-bottom: 1em;
+      color: $white;
+    }
+    .articleTocItem {
+      display: block;
+      margin-bottom: .5em;
+      color: $text;
+      text-decoration: none;
     }
   }
 }

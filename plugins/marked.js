@@ -127,7 +127,8 @@ export default (content, tags, parseHtml = false) => {
 
   const headingParse = function(text, level, raw) {
     var anchor = this.options.headerPrefix + raw.toLowerCase().replace(/[^\w]+/g, '-');
-    if (level >= 4 || level === 1) return `<h${level} id="${anchor}">${text}</h${level}>\n`;
+    // if (level >= 4 || level === 1) return `<h${level} id="${anchor}">${text}</h${level}>\n`;
+    if ( level >= 4 ) return `<h${level} id="${anchor}">${text}</h${level}>\n`
     toc.push({
       anchor: `#header-${toc.length}`,
       level: level,

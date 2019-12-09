@@ -7,6 +7,14 @@
       <p>后台: koa</p>
       <p>数据库: MongoDb</p>
     </div>
+    <div class="about_me">
+      <h2>About me</h2>
+      <p>前端小白,慢慢学习中...</p>
+    </div>
+    <div class="contact me">
+      <h2>Contact me</h2>
+      <p>邮箱地址: 1822336242@qq.com</p>
+    </div>
   </div>
 </template>
 <script>

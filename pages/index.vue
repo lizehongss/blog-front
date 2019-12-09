@@ -14,10 +14,10 @@
       </div>
     </div>
     <div v-show="yearIndex != 0" class="lastYear" @click="changeYearIndex('last')">
-      下个精彩
+      next year
     </div>
     <div v-show="yearIndex != yearList.length-1" class="nextYear" @click="changeYearIndex('next')">
-      上个回忆
+      last year
     </div>
   </section>
 </template>
@@ -86,11 +86,8 @@ export default {
   align-items: center;
   text-align: center;
   width: 50%;
-  left: 25%;
-  bottom: 10%;
-  right: 0;
-  position: absolute;
   border-radius: 3%;
+  margin: 0 auto;
   overflow: auto;
   color: #fff;
   .lastYear, .nextYear{
@@ -100,10 +97,10 @@ export default {
     border-bottom: 1px solid #fff;
   }
   .lastYear{
-    left: 0em
+    left: 30%;
   }
   .nextYear{
-    right: 0em;
+    right: 30%;   
   }
 }
 .art_years {
@@ -124,14 +121,18 @@ export default {
       flex-direction: column;
       justify-content: flex-start;
       align-items: flex-start;
+      height: 100%;
+      margin-left: 20px;
       .art_item {
-        border-bottom: 1px solid #fff;
         margin: 1em;
+        display: flex;
+        justify-content: space-between;
       }
     }
   }
 }
 .art_item_link {
+  border-bottom: 1px solid #fff;
   text-decoration: none;
   font-size: 1em;
   color: #fff;
